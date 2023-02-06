@@ -1,32 +1,22 @@
-import axios from "axios";
 
-// 1. 'https://ullhgy.sse.codesandbox.io/'
-// 2. get 'https://ullhgy.sse.codesandbox.io/contacts'
-//    post 'https://ullhgy.sse.codesandbox.io/contacts' {}
-//    patch 'https://ullhgy.sse.codesandbox.io/contacts/10' {}
-//    delete 'https://ullhgy.sse.codesandbox.io/contacts/20'
 
+import axios from 'axios'
 
 const httpClient = axios.create({
   baseURL: 'https://ullhgy.sse.codesandbox.io/'
 })
 
-httpClient
-.get('/contacts')
-.then(data=>console.log('data', data.data))
-.catch(e=>console.log('e', e))
+export const getPurchases = () => httpClient.get('/contacts')
 
-httpClient
-.post('/contacts', {name:'Test00777'})
-.then(data=>console.log('data', data.data))
-.catch(e=>console.log('e', e))
+export const createNewPurchase = values => httpClient.post('/contacts', values)
 
-httpClient
-.patch('/contacts/45e2e6c3-5524-4f39-9211-3bf482b29c02', {name: 'NewNAME'})
-.then(data=>console.log('data', data.data))
-.catch(e=>console.log('e', e))
+export const updatePurchase = (id, values) =>
+  httpClient.patch(`/contacts/${id}`, values)
 
-httpClient
-.delete('/contacts/3070ac53-57a9-4a05-81bf-ac3601bb470d')
-.then(data=>console.log('data', data.data))
-.catch(e=>console.log('e', e))
+export const deletePurchase = id => httpClient.delete(`/contacts/${id}`)
+
+// httpClient
+//   .patch('/contacts/3599dfff-f8e1-4b88-a540-af5351ebecfe', { name: 'NewName' })
+//   .then(data => console.log('data :>> ', data.data))
+//   .catch(e => console.log('e :>> ', e))
+

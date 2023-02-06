@@ -1,11 +1,10 @@
-import { configureStore } from "@reduxjs/toolkit"
-import purchasesReduces from './slicer/purchasesSlice'
+import { configureStore } from '@reduxjs/toolkit'
+import purchasesReduces from './slices/purchasesSlice'
 
 const store = configureStore({
   reducer: {
-    purchasesDate: purchasesReduces
+    purchasesData: purchasesReduces
   }
 })
-
 
 export default store
